@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entity.Otsenki" table="otsenki" catalog="gr" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="studentyi" class="entity.Studentyi" fetch="select">
+            <column name="NomerZachetki" not-null="true" />
+        </many-to-one>
+        <property name="nazvanie_predmeta" type="string">
+            <column name="Nazvanie_predmeta" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="ball" type="int">
+            <column name="Ball" not-null="true" />
+        </property>
+        <property name="statusDate" type="date">
+            <column name="StatusDate" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
